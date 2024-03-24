@@ -1,0 +1,25 @@
+﻿ADO.NET (Activex Data Objects for .Net)
+ADO.NET, .net frameworkun bir parçası olarak microsoft tarafından geliştirilmiş ve bize çeşitli veri sağlayıcıları (data providers) sunar.
+Bu data provicers arasında en sık kullanılanlar şunlardır:
+
+SQL Server:
+System.Data.SqlClient namespace'i altında bulunan SqlClient veri sağlayıcısı, Microsoft Sql Server veritabanına bağlanmak için kullanılır.
+
+OLE DB:
+System.Data.oleDb namespace'i altında bulunan oleDb veri sağlayıcısı, Ole DB uyumlu veritabanları (Access, Oracle, Sql Server) bağlanmak için kullanılır.
+
+ODBC:
+System.Data.Odbs namespace'i altında bulunan Odbs veri sağlayıcısı, ODBS sürücüsüne sahip veritabanlarına (mySql, postgresql) bağlanmak için kullanılır.
+
+Oracle:
+System.Data.OracleClient
+
+Entity Framework:
+Ado.Net'in bir parçası olan Entity Fraamework, çeşitli veritabanlarına bağlanmak için kullanılan bir ORM (object relational mapping) aracıdır. EF farklı veritabanları için sağlayıcılar kullanarak bağlantı sağlar.
+
+ADO.NET
+Yapılandırılmış verilere erişim için kullandığımız .Net teknolojisidir.
+
+2 farklı modeli vardır:
+-Connection-oriented
+-Connectionless
