@@ -87,6 +87,7 @@ namespace Ado.Net
                 }
 
                 // Listeye doldurulan ürün bilgilerini getirelim.
+                lstListe.Items.Clear();
 
                 foreach (var item in UrunListesi)
                 {
@@ -222,6 +223,85 @@ namespace Ado.Net
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string yeniUrunAdi = txtProductName.Text;
+                cn = new SqlConnection(Db.ConnectionString);
+                cn.Open();
+
+                SqlCommand cmdGuncelle = new SqlCommand("Update Products set ProductName=@name where ProductID=@id", cn);
+                cmdGuncelle.Parameters.AddWithValue("@name", yeniUrunAdi);
+                cmdGuncelle.Parameters.AddWithValue("@id", secilenID);
+
+                int sonuc = cmdGuncelle.ExecuteNonQuery();
+
+                if (sonuc > 0)
+                {
+                    MessageBox.Show("Guncelleme işlemi başarılı.");
+                    UrunListesi.Clear();
+                    UrunleriGetir();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Bir hata oluştu: {ex.Message}");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        int secilenID;
+        private void lstListe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //int secilenID = lstListe.SelectedIndex;
+            //bu örneği test etmek için 2. buton ile liste doldurulur.
+            var secilenUrun = (Product)lstListe.SelectedItem;
+            txtProductName.Text = secilenUrun.ProductName;
+            secilenID = secilenUrun.ProductID;
+        }
+
+        private void txtArama_TextChanged(object sender, EventArgs e)
+        {
+            if (txtArama.TextLength >= 1)
+            {
+                string keyword = txtArama.Text;
+                AramaBaslat(keyword);
+            }
+            else if (txtArama.TextLength==0)
+            {
+                UrunListesi.Clear();
+                UrunleriGetir();
+            }
+        }
+
+        private void AramaBaslat(string keyword)
+        {
+            lstListe.Items.Clear();
+
+            try
+            {
+                cn = new SqlConnection(Db.ConnectionString);
+                cn.Open();
+
+                SqlCommand cmdArama = new SqlCommand($"Select * from Products where ProductName like '%{keyword}%'", cn);
+
+                SqlDataReader dr = cmdArama.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    lstListe.Items.Add(dr["ProductName"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
 
         }
     }

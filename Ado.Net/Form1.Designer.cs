@@ -36,6 +36,10 @@
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.lblUrunAdi = new System.Windows.Forms.Label();
+            this.lblUrunArama = new System.Windows.Forms.Label();
+            this.txtArama = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGetir
@@ -58,6 +62,7 @@
             this.lstListe.Name = "lstListe";
             this.lstListe.Size = new System.Drawing.Size(377, 559);
             this.lstListe.TabIndex = 1;
+            this.lstListe.SelectedIndexChanged += new System.EventHandler(this.lstListe_SelectedIndexChanged);
             // 
             // btnNesne
             // 
@@ -101,7 +106,7 @@
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(828, 205);
+            this.btnSil.Location = new System.Drawing.Point(828, 173);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(442, 103);
             this.btnSil.TabIndex = 6;
@@ -111,7 +116,7 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(828, 346);
+            this.btnGuncelle.Location = new System.Drawing.Point(828, 292);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(442, 103);
             this.btnGuncelle.TabIndex = 7;
@@ -119,11 +124,48 @@
             this.btnGuncelle.UseVisualStyleBackColor = true;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
+            // txtProductName
+            // 
+            this.txtProductName.Location = new System.Drawing.Point(828, 467);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(442, 44);
+            this.txtProductName.TabIndex = 8;
+            // 
+            // lblUrunAdi
+            // 
+            this.lblUrunAdi.AutoSize = true;
+            this.lblUrunAdi.Location = new System.Drawing.Point(828, 427);
+            this.lblUrunAdi.Name = "lblUrunAdi";
+            this.lblUrunAdi.Size = new System.Drawing.Size(143, 37);
+            this.lblUrunAdi.TabIndex = 9;
+            this.lblUrunAdi.Text = "Ürün Adı";
+            // 
+            // lblUrunArama
+            // 
+            this.lblUrunArama.AutoSize = true;
+            this.lblUrunArama.Location = new System.Drawing.Point(828, 532);
+            this.lblUrunArama.Name = "lblUrunArama";
+            this.lblUrunArama.Size = new System.Drawing.Size(192, 37);
+            this.lblUrunArama.TabIndex = 11;
+            this.lblUrunArama.Text = "Ürün Arama";
+            // 
+            // txtArama
+            // 
+            this.txtArama.Location = new System.Drawing.Point(828, 572);
+            this.txtArama.Name = "txtArama";
+            this.txtArama.Size = new System.Drawing.Size(442, 44);
+            this.txtArama.TabIndex = 10;
+            this.txtArama.TextChanged += new System.EventHandler(this.txtArama_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1520, 768);
+            this.Controls.Add(this.lblUrunArama);
+            this.Controls.Add(this.txtArama);
+            this.Controls.Add(this.lblUrunAdi);
+            this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnEkle);
@@ -135,8 +177,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,6 +194,10 @@
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnGuncelle;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.Label lblUrunAdi;
+        private System.Windows.Forms.Label lblUrunArama;
+        private System.Windows.Forms.TextBox txtArama;
     }
 }
 
